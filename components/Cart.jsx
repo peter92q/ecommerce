@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai';
 import { TiDeleteOutline } from 'react-icons/ti';
@@ -9,7 +9,7 @@ import { urlFor } from '../lib/client';
 import getStripe from '../lib/getStripe';
 
 const Cart = () => {
-  const cartRef = useRef();
+
   const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuanitity, onRemove } = useStateContext();
 
   const handleCheckout = async () => {
@@ -33,7 +33,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="cart-wrapper" ref={cartRef}>
+    <div className="cart-wrapper">
       <div className="cart-container">
         <button
         type="button"
@@ -61,7 +61,7 @@ const Cart = () => {
         )}
 
         <div className="product-container">
-          {cartItems.length >= 1 && cartItems.map((item) => (
+          {cartItems.length >= 1 && cartItems.map((item, index) => (
             <div className="product" key={item._id}>
               <img src={urlFor(item?.image[0])} className="cart-product-image" />
               <div className="item-desc">
@@ -89,7 +89,8 @@ const Cart = () => {
                 </div>
               </div>
             </div>
-          ))}
+          ))
+          }
         </div>
         {cartItems.length >= 1 && (
           <div className="cart-bottom">
