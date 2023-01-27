@@ -5,7 +5,7 @@ import footer from '../public/carousel/acorg.png'
 const FooterBanner = () => {
   return (
     <div className='promo'>
-      <Image src={footer} width={1400} height={700} style={{borderRadius: '10%'}}/>
+      <Image src={footer} width={1400} height={700}/>
     </div>
   )
 }
